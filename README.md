@@ -66,7 +66,5 @@ Turn it on in Vencord settings → Plugins → **MessageHistoryLogger**.
 
 ## License
 
-They said don't sell it but Vencord itself is
-[GPL-3.0-or-later](https://github.com/Vendicated/Vencord/blob/main/LICENSE), and this
-plugin runs on top of it, so it's licensed that way too.
-See [LICENSE](LICENSE).
+[CC BY-NC 4.0](LICENSE) — free to use and tweak as long as you credit me, and don't
+sell it.
