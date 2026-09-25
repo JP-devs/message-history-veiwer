@@ -1,3 +1,9 @@
+/*
+ * Vencord, a Discord client mod
+ * Copyright (c) 2026 JP-devs
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 import "./messageHistoryLogger.css";
 
 import { findGroupChildrenByChildId, NavContextMenuPatchCallback } from "@api/ContextMenu";

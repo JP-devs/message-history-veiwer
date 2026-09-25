@@ -1,9 +1,10 @@
 # Message History Logger
 
-A Vencord plugin that saves messages you'd otherwise lose. If you're in a channel
-without **Read Message History**, Discord only hands you new messages as they arrive —
-anything sent before you loaded it is gone forever. This plugin grabs what does come
-through and keeps it around so you can read it later.
+A [Vencord](https://github.com/Vendicated/Vencord) plugin that saves messages you'd
+otherwise lose. If you're in a channel without **Read Message History**, Discord only
+hands you new messages as they arrive — anything sent before you loaded it is gone
+forever. This plugin grabs what does come through and keeps it around so you can read
+it later.
 
 ## What it does
 
@@ -65,5 +66,7 @@ Turn it on in Vencord settings → Plugins → **MessageHistoryLogger**.
 
 ## License
 
-[CC BY-NC 4.0](LICENSE) — free to use and tweak as long as you credit me, and don't
-sell it.
+They said don't sell it but Vencord itself is
+[GPL-3.0-or-later](https://github.com/Vendicated/Vencord/blob/main/LICENSE), and this
+plugin runs on top of it, so it's licensed that way too.
+See [LICENSE](LICENSE).

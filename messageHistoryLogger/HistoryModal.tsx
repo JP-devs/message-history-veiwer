@@ -1,3 +1,9 @@
+/*
+ * Vencord, a Discord client mod
+ * Copyright (c) 2026 JP-devs
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 import ErrorBoundary from "@components/ErrorBoundary";
 import { classNameFactory } from "@utils/css";
 import { Channel, RenderModalProps } from "@vencord/discord-types";
