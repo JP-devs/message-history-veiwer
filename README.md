@@ -1,45 +1,44 @@
 # Message History Logger
 
-A Vencord plugin by JP — if you're in a channel but lack the **Read Message History**
-permission, Discord only shows messages as they arrive. This plugin logs every message
-it sees in those channels so nothing is lost, and highlights the logged messages with a
-coloured overlay so you can spot them.
+A Vencord plugin that saves messages you'd otherwise lose. If you're in a channel
+without **Read Message History**, Discord only hands you new messages as they arrive —
+anything sent before you loaded it is gone forever. This plugin grabs what does come
+through and keeps it around so you can read it later.
 
-## Features
+Made by JP.
 
-- Captures `MESSAGE_CREATE` for guild channels where you **cannot** read history
-  (DMs always allow history, so they're never logged).
-- Logs persist in Vencord's `DataStore` across restarts, trimmed to the newest N
-  messages per channel (default 500).
-- Edits and deletes are reflected in the log.
-- Logged messages get a highlight overlay in the chat, with a toggle per message or
-  per channel via right-click:
-  - Right-clicking a **channel** offers "Highlight All Messages" and "Message
-    History Logger".
-  - Right-clicking a **message** offers "Highlight Message".
-- The history modal shows author, timestamp, edited marker, content, attachments,
-  embeds and stickers.
+## What it does
+
+- Listens for `MESSAGE_CREATE` in guild channels where you **can't** read history.
+  DMs are never touched since you can always read those.
+- Stores everything in Vencord's `DataStore`, so it survives restarts. Keeps the
+  newest 500 per channel by default (you can change that).
+- Keeps up with edits and deletes too, so the log isn't full of stale versions.
+- Paints a coloured overlay over logged messages in the chat so they're easy to pick
+  out. Highlight or unhighlight a whole channel or a single message from the
+  right-click menu.
+- Right-click a channel → *Message History Logger* to view or clear what's saved.
 
 ## Settings
 
-| Setting | Default | Description |
+| Setting | Default | What it does |
 | --- | --- | --- |
-| Max messages per channel | 500 | Newest messages are kept when the cap is hit |
-| Ignore bots | off | Skip messages from bots |
-| Ignore self | off | Skip messages you sent |
-| Log edits | on | Update the log when a logged message is edited |
-| Log deletes | on | Remove messages from the log when they're deleted |
-| Highlight colour | `#FACD1D` | Colour of the highlight overlay |
-| Highlight opacity | 12% | Opacity of the overlay |
-| Highlight radius | 8 | Corner radius of the overlay |
-| Show highlight dot | on | Show a dot indicator on highlighted messages |
-| Highlight dot colour | `#B5BAC1` | Colour of the dot indicator |
+| Max messages per channel | 500 | Trims the log to the newest N per channel |
+| Ignore bots | off | Skip bot messages |
+| Ignore self | off | Skip your own messages |
+| Log edits | on | Update saved messages when they're edited |
+| Log deletes | on | Drop saved messages when they're deleted |
+| Highlight colour | `#FACD1D` | Overlay colour |
+| Highlight opacity | 12% | How see-through the overlay is |
+| Highlight radius | 8 | Corner rounding on the overlay |
+| Show highlight dot | on | Little dot marker on highlighted messages |
+| Highlight dot colour | `#B5BAC1` | Colour of that dot |
 
-Colour/opacity/radius changes apply instantly — no restart needed.
+Colour/opacity changes show up right away, no restart needed.
 
-## Install
+## Installing
 
-Copy the `messageHistoryLogger` folder into your Vencord source tree:
+Drop the `messageHistoryLogger` folder into your Vencord source:
 
 ```
 <path/to/vencord>/src/plugins/messageHistoryLogger/
@@ -49,23 +48,24 @@ Copy the `messageHistoryLogger` folder into your Vencord source tree:
 └── messageHistoryLogger.css
 ```
 
-Then build:
+Then build the usual way:
 
 ```bash
-pnpm install   # first time only
-pnpm build     # or: pnpm watch / pnpm dev
+pnpm install   # once
+pnpm build     # or pnpm watch / pnpm dev
 ```
 
-Enable it in Vencord settings → Plugins → **MessageHistoryLogger**.
+Turn it on in Vencord settings → Plugins → **MessageHistoryLogger**.
 
-## Notes
+## Fine print
 
-- Messages are only captured while the gateway pushes them to your client (typically
-  while the channel is open). Anything Discord never sent you can't be recovered —
-  this does not bypass the permission.
-- If the permission check fails, the channel is skipped rather than polluting the log.
+- It only saves messages Discord actually sends your client, which basically means the
+  channel needs to be open. This doesn't bypass the permission — old messages that
+  were never delivered can't be dug up.
+- If the permission check comes back weird, the channel just gets skipped instead of
+  risking junk in the log.
 
 ## License
 
-[CC BY-NC 4.0](LICENSE) — you may use and modify it as long as you credit the author,
-and you may not sell it.
+[CC BY-NC 4.0](LICENSE) — free to use and tweak as long as you credit me, and don't
+sell it.
