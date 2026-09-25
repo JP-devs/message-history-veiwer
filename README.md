@@ -5,8 +5,6 @@ without **Read Message History**, Discord only hands you new messages as they ar
 anything sent before you loaded it is gone forever. This plugin grabs what does come
 through and keeps it around so you can read it later.
 
-Made by JP.
-
 ## What it does
 
 - Listens for `MESSAGE_CREATE` in guild channels where you **can't** read history.
